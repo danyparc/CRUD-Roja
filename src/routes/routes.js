@@ -24,7 +24,7 @@ router.post('/devf/api/v1/cursos', (req, res) => {
     nuevoCurso.save((err, curso) => {
         err
             ? res.status(409).send(err)
-            : res.status(420).send(curso)
+            : res.status(201).send(curso)
     });
 });
 
