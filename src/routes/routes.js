@@ -36,20 +36,19 @@ router.get('/devf/api/v1/cursos', (req, res) => {
         .then(curso => {
             res.status(200).send(curso)
         })
-        .catch(error => res.status(404).error(error))
+        .catch(error => res.status(404).send(error))
 });
 
 // Read an specific element by ID
 router.get('/devf/api/v1/cursos/:id', (req, res) => {
     const cursoId = req.params.id;
-
-    Curso
-        .find(cursoId)
+    console.log('cursoID: ', cursoId);
+    Curso.findById(cursoId)
         .exec()
         .then(curso => {
             res.status(200).send(curso)
         })
-        .catch(error => res.status(404).error(error))
+        .catch(error => res.status(404))
 });
 
 // UPDATE
