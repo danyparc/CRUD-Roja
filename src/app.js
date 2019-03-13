@@ -2,11 +2,19 @@ const express = require('express');
 const indexRoutes = require('./routes/routes');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
-app.use(bodyParser.json())
- app.use(bodyParser.urlencoded({extended: true}))
+app.use(cors({
+    'allowedHeaders': ['sessionId', 'Content-Type'],
+    'exposedHeaders': ['sessionId'],
+    'origin': '*',
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+  }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Mongo URI
 const db = require('./config/keys').mongoURI;

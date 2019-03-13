@@ -44,11 +44,11 @@ router.get('/devf/api/v1/cursos/:id', (req, res) => {
     const cursoId = req.params.id;
     console.log('cursoID: ', cursoId);
     Curso.findById(cursoId)
-        .exec()
-        .then(curso => {
-            res.status(200).send(curso)
+        .exec().then(curso => {
+            console.log('curso: ', curso);            
+            res.send(curso)
         })
-        .catch(error => res.status(404))
+        .catch(error => res.status(404).send(error))
 });
 
 // UPDATE
