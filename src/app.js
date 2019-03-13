@@ -27,6 +27,7 @@ mongoose.connect(db)
 //use port 3000 unless there exists a preconfigured port
 const PORT = process.env.PORT || 3000
 
+// LA app escucha
 app.listen(PORT, () => (console.log('Servidor escuchando en el puerto 3000')));
 
 app.use('/', indexRoutes);
